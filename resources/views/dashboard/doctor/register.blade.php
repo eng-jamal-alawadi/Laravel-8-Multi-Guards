@@ -15,25 +15,23 @@
     <link rel="stylesheet" href="{{ asset('dashboard/plugins/icheck-bootstrap/icheck-bootstrap.min.css') }}">
     <!-- Theme style -->
     <link rel="stylesheet" href="{{ asset('dashboard/dist/css/adminlte.min.css') }}">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css"
-        integrity="sha512-vKMx8UnXk60zUwyUnUPM3HbQo8QfmNx7+ltw8Pm5zLusl1XIfwcxo8DbWCqMGKaWeNxWA8yrx5v3SaVpMvR3CA=="
-        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css" integrity="sha512-vKMx8UnXk60zUwyUnUPM3HbQo8QfmNx7+ltw8Pm5zLusl1XIfwcxo8DbWCqMGKaWeNxWA8yrx5v3SaVpMvR3CA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
 <body class="hold-transition register-page">
     <div class="register-box">
         <div class="register-logo">
             <a href="#"><b>Laravel 8</b>Multi guars</a>
+
         </div>
 
         <div class="card">
             <div class="card-body register-card-body">
-                <p class="login-box-msg">Register a new membership</p>
+                <p class="login-box-msg">Register a new Doctor</p>
 
                 <form>
                     @csrf
                     <div class="input-group mb-3">
-                        <input type="text" value="{{ old('name') }}" class="form-control" id="name"
-                            placeholder="Full name">
+                        <input type="text" value="{{old('name')}}" class="form-control" id="name" placeholder="Full name">
                         <div class="input-group-append">
                             <div class="input-group-text">
                                 <span class="fas fa-user"></span>
@@ -41,11 +39,20 @@
                         </div>
                     </div>
                     <div class="input-group mb-3">
-                        <input type="email" class="form-control" value="{{ old('email') }}" id="email"
-                            placeholder="Email">
+                        <input type="email" class="form-control" value="{{old('email')}}" id="email" placeholder="Email">
                         <div class="input-group-append">
                             <div class="input-group-text">
                                 <span class="fas fa-envelope"></span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="input-group mb-3">
+                        <input type="text" class="form-control" value="{{old('hospital')}}" id="hospital" placeholder="hospital">
+                        <div class="input-group-append">
+                            <div class="input-group-text">
+                                <span class="fas fa-user-md"></span>
+
+
                             </div>
                         </div>
                     </div>
@@ -77,7 +84,7 @@
                 </form>
 
 
-                <a href="{{ route('admin.login') }}" class="text-center">I already have a membership</a>
+                <a href="{{ route('doctor.login') }}" class="text-center">I already have a membership</a>
             </div>
             <!-- /.form-box -->
         </div><!-- /.card -->
@@ -91,27 +98,25 @@
     <!-- AdminLTE App -->
     <script src="{{ asset('dashboard/dist/js/adminlte.min.js') }}"></script>
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"
-        integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"
-        integrity="sha512-VEd+nq25CkR676O+pLBnDW09R7VQX9Mdiij052gVCp5yVH3jGtH70Ho/UUv4mJDsEdTvqRCFZg0NKGiojGnUCw=="
-        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js" integrity="sha512-VEd+nq25CkR676O+pLBnDW09R7VQX9Mdiij052gVCp5yVH3jGtH70Ho/UUv4mJDsEdTvqRCFZg0NKGiojGnUCw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 
 
     <script>
         function create() {
-            axios.post('/admin/create/', {
-                    name: document.getElementById('name').value,
-                    email: document.getElementById('email').value,
-                    password: document.getElementById('password').value,
-                    confirmPassword: document.getElementById('confirmPassword').value
+            axios.post('/doctor/create/',{
+                name:document.getElementById('name').value,
+                email:document.getElementById('email').value,
+                hospital:document.getElementById('hospital').value,
+                password:document.getElementById('password').value,
+                confirmPassword:document.getElementById('confirmPassword').value
 
-                })
+            })
                 .then(function(response) {
                     // handle success
                     console.log(response);
                     toastr.success(response.data.message);
-                    window.location.href = "/admin/home";
+                    window.location.href ="/doctor/home";
 
                 })
                 .catch(function(error) {

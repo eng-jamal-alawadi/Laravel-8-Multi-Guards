@@ -19,7 +19,7 @@
 <body class="hold-transition login-page">
 <div class="login-box">
   <div class="login-logo">
-    <a href="../../index2.html"><b>Admin</b>LTE</a>
+    <a href="#"><b>Laravel 8</b>Multi guars</a>
   </div>
   <!-- /.login-logo -->
   <div class="card">
@@ -55,7 +55,7 @@
       </form>
 
       <p class="mb-0">
-        <a href="{{route('user.register')}}" class="text-center">Register a new membership</a>
+        <a href="{{route('admin.register')}}" class="text-center">Register a new Admin</a>
       </p>
     </div>
     <!-- /.login-card-body -->
@@ -77,17 +77,17 @@
 
 <script>
     function login() {
-        axios.post('/user/login/',{
+        axios.post('/admin/login/',{
             email:document.getElementById('email').value,
             password:document.getElementById('password').value,
-            remembeer:document.getElementById('remember').checked
+
 
         })
             .then(function(response) {
                 // handle success
                 console.log(response);
                 toastr.success(response.data.message);
-                window.location.href ="/user/home";
+                window.location.href ="/admin/home";
 
             })
             .catch(function(error) {
