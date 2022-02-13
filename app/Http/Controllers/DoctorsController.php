@@ -17,6 +17,7 @@ class DoctorsController extends Controller
             'name'=>'required|string|max:255',
             'email'=>'required|string|email|max:255',
             'password'=>'required|string|min:5|',
+            'confirmPassword'=>'required|string|min:5|same:password',
             'hospital'=>'required|string|max:255',
 
         ]);
