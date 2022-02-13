@@ -80,7 +80,6 @@
         axios.post('/user/login/',{
             email:document.getElementById('email').value,
             password:document.getElementById('password').value,
-            remembeer:document.getElementById('remember').checked
 
         })
             .then(function(response) {
